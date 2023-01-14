@@ -36,6 +36,81 @@ def bubble_sort(list):
     print(list)
 
 
-selection_sort(list)
-insertion_sort(list)
-bubble_sort(list)
+
+
+# quick sort
+def quick_sort(list,left,right):
+    if left < right:
+        pos = partition(list,left,right)
+        quick_sort(list, left, pos-1)
+        quick_sort(list, pos + 1, right)
+    return list    
+
+def partition(list,left,right):
+    i = left
+    j = right -1 
+    pivot = list[right]
+
+    while i < j:
+        while i < right and list[i] < pivot:
+            i += 1
+        while j > left and list[j]>= pivot:
+            j -=1
+
+        if i< j:
+            list[i],list[j] = list[j],list[i]
+    
+    if list[i] >pivot:
+        list[i],list[right] = list[right],list[i]
+
+    return i 
+    
+
+#merge sort 
+def merge_sort(list):
+    if len(list)>1:
+        left_list = list[0:len(list)//2]
+        right_list = list[len(list)//2:len(list)]
+
+        #recursion
+        merge_sort(left_list)
+        merge_sort(right_list)
+
+        #merge
+        i = 0
+        j = 0
+        k = 0
+
+        while i < len(left_list) and j < len(right_list):
+            if left_list[i] < right_list[j]:
+                list[k] = left_list[i]
+                i+=1
+            else:
+                list[k] = right_list[j]
+                j+=1
+
+            k+=1
+
+        while i < len(left_list):
+            list[k] = left_list[i]
+            i+=1
+            k+=1
+        
+        while j < len(right_list):
+            list[k] = right_list[j]
+            j+=1
+            k+=1
+
+list= [3,4,1,3,5,6,2,3,5,2]
+merge_sort(list)
+
+print(list)
+                
+
+
+        
+
+
+
+
+
