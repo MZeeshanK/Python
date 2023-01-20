@@ -1,4 +1,6 @@
 plot_2.py
 data_set.py
+titanic.py
+feature.py
 __pycache__
 .vscode

@@ -8,7 +8,7 @@ def fillInNull(series, data):
   
 
 fillInNull('First Name','Unknown')
-fillInNull('Gender','Unknown')
+fillInNull('Gender','Male')
 fillInNull('Team','Unknown')
 fillInNull('Senior Management',False)
 
@@ -19,7 +19,16 @@ data_set['Start Date'] = pd.to_datetime(data_set['Start Date'])
 
 time = data_set['Last Login Time']
 
-print(data_set)
+data = data_set[['Gender',"Team"]]
+
+gender = pd.get_dummies(data['Gender'])
+
+gender = pd.get_dummies(data['Gender'],drop_first=True)
+
+print(gender)
+# print(data_set)
+
+
 
 
 
